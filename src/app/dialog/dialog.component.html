@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Add Products</h1>
+<div mat-dialog-content>
+    <form [formGroup]="productForm">
+   <mat-form-field appearance="outline">
+    <mat-label>Product Name</mat-label>
+    <input matInput formControlName="productName" placeholder="Product Name">
+   </mat-form-field>
+   <mat-form-field appearance="outline">
+    <mat-label>Product Category</mat-label>
+    <mat-select formControlName="Category" placeholder="Product Name">
+        <mat-option value="Fruite">Fruite</mat-option>
+        <mat-option value="Vegitable">Vegitable</mat-option>
+        <mat-option value="">Electronics</mat-option>
+    </mat-select>
+   </mat-form-field>
+   <!-- <mat-form-field appearance="outline">
+    <mat-label>Choose a date</mat-label>
+    <input matInput formControlName="date" [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>   -->
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  
+  <mat-radio-group  formControlName="freshnesh"  class="example-radio-group">
+    <label for=""><h1>Product Freshnes</h1></label>
+    <mat-radio-button class="example-radio-button" *ngFor="let fresh of FreshnesList" [value]="fresh">
+    {{fresh}}</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field appearance="outline">
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price" type="number" placeholder="Price">
+   </mat-form-field>
+   <mat-form-field appearance="outline">
+    <mat-label>Comment</mat-label>
+    <textarea matInput formControlName="comment"></textarea>
+   </mat-form-field>
+    </form>
+   <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button mat-raised-button color="primary" (click)="addProduct()">Save</button>
+   </div>
+  
+</div>
